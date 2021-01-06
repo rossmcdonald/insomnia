@@ -8,14 +8,19 @@
       "_id": "__REQ_1__",
       "_type": "request",
       "parentId": "__WORKSPACE_ID__",
-      "url": "http://192.168.1.1:9200/executions/_search",
-      "name": "http://192.168.1.1:9200/executions/_search",
+      "url": "http://localhost:8001/consumers",
+      "name": "http://localhost:8001/consumers",
       "method": "POST",
       "body": {
         "mimeType": "application/x-www-form-urlencoded",
-        "text": "{\"query\":{\"match_all\":{}}}"
+        "params": [
+          {
+            "name": "username",
+            "value": "Jason"
+          }
+        ]
       },
-      "parameters": [{ "name": "pretty", "disabled": false, "value": "" }],
+      "parameters": [],
       "headers": [],
       "authentication": {}
     }

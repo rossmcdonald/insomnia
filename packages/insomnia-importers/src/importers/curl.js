@@ -188,7 +188,11 @@ function importArgs(args) {
   const textBody = textBodyParams.join('&');
 
   const contentTypeHeader = headers.find(h => h.name.toLowerCase() === 'content-type');
-  const mimeType = contentTypeHeader ? contentTypeHeader.value.split(';')[0] : null;
+  const mimeType = contentTypeHeader
+    ? contentTypeHeader.value.split(';')[0]
+    : textBody && !bodyAsGET
+    ? 'application/x-www-form-urlencoded'
+    : null;
 
   // Body (Multipart Form Data)
   const formDataParams = [...(pairs.form || []), ...(pairs.F || [])].map(str => {
@@ -204,7 +208,7 @@ function importArgs(args) {
     }
     return item;
   });
-
+  console.log('textBody', textBody);
   // Body
   const body = mimeType ? { mimeType: mimeType } : {};
   if (textBody && bodyAsGET) {
@@ -215,10 +219,14 @@ function importArgs(args) {
 
     parameters.push(...bodyParams);
   } else if (textBody && mimeType === 'application/x-www-form-urlencoded') {
-    body.params = textBody.split('&').map(v => {
-      const [name, value] = v.split('=');
-      return { name: name || '', value: value || '' };
-    });
+    if (textBody[0] === '{') {
+      body.text = textBody;
+    } else {
+      body.params = textBody.split('&').map(v => {
+        const [name, value] = v.split('=');
+        return { name: name || '', value: value || '' };
+      });
+    }
   } else if (textBody) {
     body.text = textBody;
     body.mimeType = mimeType || '';

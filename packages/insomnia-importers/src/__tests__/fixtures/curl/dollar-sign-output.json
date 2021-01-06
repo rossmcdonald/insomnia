@@ -12,7 +12,7 @@
       "name": "https://test.dk",
       "method": "POST",
       "body": {
-        "mimeType": "",
+        "mimeType": "application/x-www-form-urlencoded",
         "text": "{\"key\":\"TEST\",\"websiteId\":2,\"storeId\":4,\"remove\":true,\"coupon\":{\"code\":\"erwrwer\"}}"
       },
       "parameters": [],
