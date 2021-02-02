@@ -208,7 +208,7 @@ function importArgs(args) {
     }
     return item;
   });
-  console.log('textBody', textBody);
+
   // Body
   const body = mimeType ? { mimeType: mimeType } : {};
   if (textBody && bodyAsGET) {
