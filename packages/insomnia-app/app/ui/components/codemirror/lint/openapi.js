@@ -1,7 +1,10 @@
 import CodeMirror from 'codemirror';
-import { Spectral } from '@stoplight/spectral';
+import { Spectral, isOpenApiv2, isOpenApiv3 } from '@stoplight/spectral';
 
 const spectral = new Spectral();
+spectral.registerFormat(`oas2`, isOpenApiv2);
+spectral.registerFormat(`oas3`, isOpenApiv3);
+spectral.loadRuleset(`spectral:oas`);
 
 CodeMirror.registerHelper('lint', 'openapi', async function(text) {
   const results = await spectral.run(text);

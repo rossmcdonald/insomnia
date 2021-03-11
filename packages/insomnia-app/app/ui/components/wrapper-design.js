@@ -7,7 +7,7 @@ import { Breadcrumb, Button, Header, NoticeTable } from 'insomnia-components';
 import ErrorBoundary from './error-boundary';
 import SpecEditorSidebar from './spec-editor/spec-editor-sidebar';
 import CodeEditor from './codemirror/code-editor';
-import { Spectral } from '@stoplight/spectral';
+import { Spectral, isOpenApiv2, isOpenApiv3 } from '@stoplight/spectral';
 import { showModal } from './modals';
 import GenerateConfigModal from './modals/generate-config-modal';
 import SwaggerUI from 'swagger-ui-react';
@@ -23,6 +23,9 @@ import { ACTIVITY_HOME } from '../../common/constants';
 import ActivityToggle from './activity-toggle';
 
 const spectral = new Spectral();
+spectral.registerFormat(`oas2`, isOpenApiv2);
+spectral.registerFormat(`oas3`, isOpenApiv3);
+spectral.loadRuleset(`spectral:oas`);
 
 type Props = {|
   gitSyncDropdown: React.Node,

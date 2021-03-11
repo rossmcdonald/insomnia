@@ -89,11 +89,14 @@ import {
   getAppName,
   SortOrder,
 } from '../../common/constants';
-import { Spectral } from '@stoplight/spectral';
+import { Spectral, isOpenApiv2, isOpenApiv3 } from '@stoplight/spectral';
 import ProtoFilesModal from './modals/proto-files-modal';
 import { GrpcDispatchModalWrapper } from '../context/grpc';
 
 const spectral = new Spectral();
+spectral.registerFormat(`oas2`, isOpenApiv2);
+spectral.registerFormat(`oas3`, isOpenApiv3);
+spectral.loadRuleset(`spectral:oas`);
 
 export type WrapperProps = {
   // Helper Functions
