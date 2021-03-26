@@ -9,21 +9,21 @@
           "methods": ["GET"],
           "strip_path": false,
           "tags": ["OAS3_import", "OAS3file_uspto.yaml"],
-          "name": "list-data-sets",
+          "name": "list_data_sets",
           "paths": ["/$"]
         },
         {
           "methods": ["GET"],
           "strip_path": false,
           "tags": ["OAS3_import", "OAS3file_uspto.yaml"],
-          "name": "list-searchable-fields",
+          "name": "list_searchable_fields",
           "paths": ["\/(?<dataset>\\S+)\/(?<version>\\S+)\/fields$"]
         },
         {
           "methods": ["POST"],
           "strip_path": false,
           "tags": ["OAS3_import", "OAS3file_uspto.yaml"],
-          "name": "perform-search",
+          "name": "perform_search",
           "paths": ["\/(?<dataset>\\S+)\/(?<version>\\S+)\/records$"]
         }
       ],

@@ -103,7 +103,7 @@ export function generateRouteName(
   }
 
   if (pathItem[method] && pathItem[method].operationId) {
-    return pathItem[method].operationId;
+    return generateSlug(pathItem[method].operationId);
   }
 
   // replace all `/` with `-` except the ones at the beginng or end of a string

@@ -37,7 +37,7 @@ describe('names', () => {
   });
 
   it('api.paths[path][method].operationId is second priority (and not slugified)', () => {
-    compare('operationId-smash', {
+    compare('operationId_smash', {
       'x-kong-name': 'pathItem-smash',
       post: {
         operationId: 'operationId-smash',

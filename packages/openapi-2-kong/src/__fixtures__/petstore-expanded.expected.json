@@ -23,7 +23,7 @@
           "methods": ["GET"],
           "strip_path": false,
           "tags": ["OAS3_import", "OAS3file_petstore-expanded.yaml"],
-          "name": "find pet by id",
+          "name": "find_pet_by_id",
           "paths": ["\/pets\/(?<id>\\S+)$"]
         },
         {
